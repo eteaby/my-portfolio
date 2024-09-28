@@ -6,6 +6,8 @@
     
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         
         .img-curvy {
@@ -44,47 +46,34 @@
 
 <!-- Navbar -->
 <nav class="bg-gray-800 p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <!-- Hamburger Menu Button (hidden on larger screens) -->
-        <div class="sm:hidden">
-            <button id="menu-btn" class="text-white focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-
-        <!-- Centered Menu Links (hidden on small screens, visible on larger screens) -->
-        <ul id="menu" class="hidden sm:flex space-x-6 text-white text-center justify-center mx-auto">
-            <li><a href="#home" class="hover:text-yellow-500">Home</a></li>
-            <li><a href="#services" class="hover:text-yellow-500">Services</a></li>
-            <li><a href="#about" class="hover:text-yellow-500">About</a></li>
-            <li><a href="#skills" class="hover:text-yellow-500">Skills</a></li>
-            <li><a href="#portfolio" class="hover:text-yellow-500">Portfolio</a></li>
-            <li><a href="#contact" class="hover:text-yellow-500">Contact</a></li>
+    <div class="container mx-auto flex justify-center items-center max-w-5xl px-4">
+        <!-- Centered Menu Links -->
+        <ul class="flex space-x-6 text-white text-center">
+            <li><a href="#home" class="menu-link hover:text-yellow-500">Home</a></li>
+            <li><a href="#services" class="menu-link hover:text-yellow-500">Services</a></li>
+            <li><a href="#about" class="menu-link hover:text-yellow-500">About</a></li>
+            <li><a href="#skills" class="menu-link hover:text-yellow-500">Skills</a></li>
+            <li><a href="#portfolio" class="menu-link hover:text-yellow-500">Portfolio</a></li>
+            <li><a href="#contact" class="menu-link hover:text-yellow-500">Contact</a></li>
         </ul>
-    </div>
-
-    <!-- Mobile Menu (hidden by default) -->
-    <div id="mobile-menu" class="sm:hidden hidden flex flex-col space-y-4 mt-4 text-center">
-        <a href="#home" class="block text-white hover:text-yellow-500">Home</a>
-        <a href="#services" class="block text-white hover:text-yellow-500">Services</a>
-        <a href="#about" class="block text-white hover:text-yellow-500">About</a>
-        <a href="#skills" class="block text-white hover:text-yellow-500">Skills</a>
-        <a href="#portfolio" class="block text-white hover:text-yellow-500">Portfolio</a>
-        <a href="#contact" class="block text-white hover:text-yellow-500">Contact</a>
     </div>
 </nav>
 
 <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    // Handle active menu item
+    const menuLinks = document.querySelectorAll('.menu-link');
 
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Remove active state from all links
+            menuLinks.forEach(l => l.classList.remove('text-yellow-500'));
+
+            // Add active state to the clicked link
+            link.classList.add('text-yellow-500');
+        });
     });
 </script>
-    
+
 <!-- Hero Section -->
 <section id="home" class="relative h-screen flex items-center bg-gray-900">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -152,23 +141,32 @@
 <section id="skills" class="py-12 bg-gray-900">
     <div class="container mx-auto text-center fade-in px-4 md:px-8">
         <h2 class="text-3xl text-yellow-500">Skills</h2>
-        <p class="text-gray-400 mt-4">I am proficient in various technologies and tools, including:</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            <div class="bg-gray-800 p-6 rounded-lg scale-hover transition-transform">
-                <h3 class="text-xl font-bold mb-4">HTML & CSS</h3>
-                <p class="text-gray-400 mt-4">Expert in crafting responsive web layouts.</p>
+        <!-- Skills Icons Section -->
+        <div class="flex justify-center flex-wrap gap-8 mt-8">
+            <!-- HTML Icon -->
+            <div class="flex flex-col items-center">
+                <i class="fab fa-html5 text-yellow-500 text-6xl mb-4"></i>
+                <h3 class="text-xl font-bold text-white">HTML & CSS</h3>
+                <p class="text-gray-400 mt-2 text-sm">Responsive web layouts</p>
             </div>
-            <div class="bg-gray-800 p-6 rounded-lg scale-hover transition-transform">
-                <h3 class="text-xl font-bold mb-4">JavaScript</h3>
-                <p class="text-gray-400 mt-4">Skilled in creating dynamic and interactive web experiences.</p>
+
+            <!-- JavaScript Icon -->
+            <div class="flex flex-col items-center">
+                <i class="fab fa-js-square text-yellow-500 text-6xl mb-4"></i>
+                <h3 class="text-xl font-bold text-white">JavaScript</h3>
+                <p class="text-gray-400 mt-2 text-sm">Dynamic & interactive web experiences</p>
             </div>
-            <div class="bg-gray-800 p-6 rounded-lg scale-hover transition-transform">
-                <h3 class="text-xl font-bold mb-4">Tailwind & React</h3>
-                <p class="text-gray-400 mt-4">Proficient in building user interfaces with React.</p>
+
+            <!-- React Icon -->
+            <div class="flex flex-col items-center">
+                <i class="fab fa-react text-yellow-500 text-6xl mb-4"></i>
+                <h3 class="text-xl font-bold text-white">React & Tailwind</h3>
+                <p class="text-gray-400 mt-2 text-sm">Building user interfaces</p>
             </div>
         </div>
     </div>
 </section>
+
 
 
 <!-- Portfolio Section -->
